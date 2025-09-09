@@ -1,277 +1,243 @@
-export default function PersonalSite() {
-  return (
-    <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      {/* META (rendered for reference) */}
-      <HeadTags />
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio website — human‑centered projects, services, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f4f0;            /* light sand */
+      --fg:#2d2a26;            /* deep wood */
+      --muted:#6f685f;         /* warm gray */
+      --brand:#b78652;         /* caramel wood */
+      --brand-dark:#935f2b;    /* darker caramel */
+      --card:#ffffff;          /* white card */
+      --border:#e6dfd5;        /* light grain */
+      --accent:#3b5d50;        /* deep green */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); color:var(--fg);}    
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1200px; margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:50; background:rgba(247,244,240,.85); backdrop-filter: blur(8px); border-bottom:1px solid var(--border)}
+    nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand .mark{width:14px; height:14px; border-radius:4px; background:linear-gradient(135deg, var(--brand), var(--brand-dark));}
+    .nav-links{display:flex; gap:18px; font-size:14px; color:var(--muted)}
+    .btn{display:inline-block; padding:12px 16px; border-radius:999px; border:1px solid var(--border); background:var(--card)}
+    .btn.brand{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn.brand:hover{background:var(--brand-dark); border-color:var(--brand-dark)}
+    .btn.ghost{background:transparent}
+    section{padding:72px 0}
 
-      {/* Sticky Nav */}
-      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200 dark:border-neutral-800">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
-          <a href="#home" className="font-semibold tracking-tight text-lg">Divine Uwera</a>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#about" className="hover:opacity-70">About</a>
-            <a href="#projects" className="hover:opacity-70">Projects</a>
-            <a href="#experience" className="hover:opacity-70">Experience</a>
-            <a href="#skills" className="hover:opacity-70">Skills</a>
-            <a href="#writing" className="hover:opacity-70">Writing</a>
-            <a href="#testimonials" className="hover:opacity-70">Testimonials</a>
-            <a href="#contact" className="hover:opacity-70">Contact</a>
-          </nav>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <a href="#contact" className="px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-sm">Let’s talk</a>
-          </div>
+    /* HERO */
+    .hero{display:grid; gap:28px; grid-template-columns:1fr; align-items:center;}
+    .hero h1{font-size:clamp(34px,6vw,60px); line-height:1.05; margin:.2em 0}
+    .hero p.kicker{letter-spacing:.12em; text-transform:uppercase; font-size:12px; color:var(--accent)}
+    .hero .lede{font-size:18px; color:var(--muted); max-width:60ch}
+    .hero .figure{position:relative; display:grid; place-items:center}
+    .frame{width:min(480px,90%); aspect-ratio:4/5; border-radius:24px; overflow:hidden; border:6px solid var(--card); box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    .badge{position:absolute; bottom:-12px; right:6%; background:var(--accent); color:#fff; padding:10px 14px; border-radius:14px; font-size:13px; box-shadow:0 6px 20px rgba(59,93,80,.35)}
+
+    /* SECTIONS */
+    h2{font-size:28px; margin:0 0 10px 0}
+    .muted{color:var(--muted)}
+    .cards{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px,1fr))}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px}
+
+    /* WORK GRID */
+    .grid{display:grid; gap:18px}
+    .grid.work{grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+    .work-item{background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden}
+    .work-item img{width:100%; aspect-ratio:4/3; object-fit:cover}
+    .work-item .body{padding:14px}
+
+    /* GALLERY */
+    .gallery{display:grid; gap:10px; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr))}
+    .ph{aspect-ratio: 4/3; border:1px dashed var(--border); border-radius:14px; display:grid; place-items:center; color:var(--muted); background:#fbfaf8}
+
+    /* CONTACT */
+    .contact-grid{display:grid; gap:24px}
+    @media(min-width:900px){
+      .hero{grid-template-columns:1.1fr .9fr}
+      .contact-grid{grid-template-columns:1fr 1fr}
+    }
+    form input, form textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card); color:var(--fg)}
+    form button{padding:12px 16px; border-radius:999px; border:1px solid var(--brand); background:var(--brand); color:#fff}
+    form button:hover{background:var(--brand-dark); border-color:var(--brand-dark)}
+
+    footer{border-top:1px solid var(--border); padding:28px 0; font-size:14px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home" aria-label="Home">
+          <span class="mark" aria-hidden="true"></span>
+          <span>Your Name</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+          <a class="btn brand" href="#contact">Let’s work</a>
         </div>
-      </header>
-
-      {/* Hero */}
-      <section id="home" className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <p className="text-sm uppercase tracking-widest text-neutral-500 dark:text-neutral-400">Hello, I’m</p>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mt-1">Divine Uwera</h1>
-          <p className="mt-4 text-lg md:text-xl text-neutral-700 dark:text-neutral-300">Entrepreneurship & Innovation (ESTEEM @ Notre Dame). I build tech-for-good products and help faith-centered communities grow through data and design.</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#projects" className="px-4 py-2 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">View work</a>
-            <a href="#contact" className="px-4 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700">Contact</a>
-            <a href="/resume.pdf" className="px-4 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700" download>Download CV</a>
-          </div>
-          <ul className="mt-6 flex gap-4 text-sm text-neutral-500 dark:text-neutral-400">
-            <li>South Bend, IN</li>
-            <li>•</li>
-            <li>Open to consulting</li>
-          </ul>
-        </div>
-        <div className="flex justify-center md:justify-end">
-          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="Portrait" className="w-64 h-64 md:w-80 md:h-80 rounded-3xl object-cover shadow-xl" />
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">About</h2>
-        <p className="mt-4 leading-relaxed text-neutral-700 dark:text-neutral-300">I’m a graduate student in the ESTEEM program at the University of Notre Dame. My work sits at the intersection of education, community development, and responsible technology. Recent projects include the <strong>Illuminare Initiative</strong>—helping Catholic schools and parishes become vibrant hubs for learning via connectivity, digital classrooms, and multilingual access.</p>
-        <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm">
-          <Stat label="Years of experience" value="5+" />
-          <Stat label="Projects shipped" value="20+" />
-          <Stat label="Communities served" value="8" />
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">Selected Projects</h2>
-        <div className="mt-6 grid md:grid-cols-2 gap-6">
-          <ProjectCard 
-            title="Illuminare Initiative"
-            blurb="Pilot to equip parishes with Starlink-backed internet, digital classrooms, and real-time translation to support faith & learning."
-            tags={["Connectivity","EdTech","Community"]}
-            link="#"
-            img="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
-          />
-          <ProjectCard 
-            title="RecSports Ops"
-            blurb="Process improvements and analytics for campus recreation staffing and scheduling."
-            tags={["Ops","Analytics","Scheduling"]}
-            link="#"
-            img="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop"
-          />
-          <ProjectCard 
-            title="Market Insights Toolkit"
-            blurb="Lightweight research workflows to turn raw data into clear, actionable stories."
-            tags={["Research","Data Viz","Strategy"]}
-            link="#"
-            img="https://images.unsplash.com/photo-1551281044-8d8f4f99b3a8?q=80&w=1200&auto=format&fit=crop"
-          />
-          <ProjectCard 
-            title="Community Story Lab"
-            blurb="Teaching teens media & storytelling to boost belonging and voice."
-            tags={["Youth","Storytelling","Education"]}
-            link="#"
-            img="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop"
-          />
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section id="experience" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">Experience</h2>
-        <Timeline />
-      </section>
-
-      {/* Skills */}
-      <section id="skills" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">Skills</h2>
-        <div className="mt-4 flex flex-wrap gap-2 text-sm">
-          {[
-            "Product Discovery","User Interviews","Curriculum Design","Data Analysis",
-            "Python","Power BI","Excel","SQL","Notion","Figma","Public Speaking","Grant Writing"
-          ].map((s) => (
-            <span key={s} className="px-3 py-1 rounded-full border border-neutral-300 dark:border-neutral-700">{s}</span>
-          ))}
-        </div>
-      </section>
-
-      {/* Writing */}
-      <section id="writing" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">Writing</h2>
-        <div className="mt-6 grid md:grid-cols-3 gap-6 text-sm">
-          <ArticleCard title="How to make data tell a human story" date="Aug 2025" link="#" />
-          <ArticleCard title="Piloting digital classrooms in faith communities" date="Jul 2025" link="#" />
-          <ArticleCard title="Student belonging: simple signals that matter" date="Jun 2025" link="#" />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="testimonials" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">Testimonials</h2>
-        <div className="mt-6 grid md:grid-cols-3 gap-6">
-          <Quote text="Clear, kind, and driven. Translates complex ideas into action." author="Mentor, ESTEEM" />
-          <Quote text="Built trust quickly with school leaders and delivered a usable pilot." author="Partner, STMA" />
-          <Quote text="Great at turning interviews into insights and next steps." author="Advisor" />
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="mx-auto max-w-6xl px-4 py-14">
-        <h2 className="text-2xl md:text-3xl font-semibold">Get in touch</h2>
-        <p className="mt-3 text-neutral-700 dark:text-neutral-300">Reach out for collaborations, speaking, or coffee chats.</p>
-        <form className="mt-6 grid gap-4 max-w-xl" onSubmit={(e)=>{e.preventDefault(); alert('Thanks! I\'ll get back to you soon.')}}>
-          <input className="px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70" placeholder="Your name" required />
-          <input type="email" className="px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70" placeholder="Email" required />
-          <textarea rows={5} className="px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/70" placeholder="How can I help?" required />
-          <div className="flex gap-3">
-            <button className="px-4 py-2 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">Send</button>
-            <a href="mailto:divine@example.com" className="px-4 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700">Or email directly</a>
-          </div>
-        </form>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-neutral-200 dark:border-neutral-800 mt-12">
-        <div className="mx-auto max-w-6xl px-4 py-8 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Divine Uwera. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:opacity-70">LinkedIn</a>
-            <a href="#" className="hover:opacity-70">GitHub</a>
-            <a href="#" className="hover:opacity-70">Substack</a>
-          </div>
-        </div>
-      </footer>
-
-      {/* Structured Data & Analytics placeholders */}
-      <StructuredData />
-      <AnalyticsPlaceholder />
+      </nav>
     </div>
-  );
-}
+  </header>
 
-function HeadTags(){
-  return (
-    <>
-      {/* These are placeholders for when you export this to a real Next.js/HTML page */}
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="Divine Uwera – Entrepreneurship & Innovation. Projects, writing, and contact." />
-      <meta property="og:title" content="Divine Uwera – Personal Site" />
-      <meta property="og:description" content="Projects, experience, and contact." />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <link rel="icon" href="/favicon.ico" />
-      <title>Divine Uwera – Personal Website</title>
-    </>
-  );
-}
-
-function ThemeToggle(){
-  return (
-    <button
-      onClick={() => document.documentElement.classList.toggle('dark')}
-      className="px-3 py-1.5 rounded-xl border border-neutral-300 dark:border-neutral-700 text-sm"
-      aria-label="Toggle dark mode"
-    >
-      Toggle theme
-    </button>
-  );
-}
-
-function Stat({label, value}:{label:string, value:string}){
-  return (
-    <div className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800">
-      <div className="text-2xl font-semibold">{value}</div>
-      <div className="text-neutral-500 dark:text-neutral-400 text-sm">{label}</div>
-    </div>
-  );
-}
-
-function ProjectCard({title, blurb, tags, link, img}:{title:string, blurb:string, tags:string[], link:string, img:string}){
-  return (
-    <a href={link} className="group rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 hover:shadow-xl transition-shadow">
-      <img src={img} alt="Project cover" className="h-48 w-full object-cover" />
-      <div className="p-5">
-        <h3 className="text-lg font-semibold group-hover:underline">{title}</h3>
-        <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">{blurb}</p>
-        <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          {tags.map(t => <span key={t} className="px-2 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700">{t}</span>)}
+  <main id="home" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <p class="kicker">Portfolio</p>
+        <h1>Warm, simple design for real people</h1>
+        <p class="lede">I build clear websites and lightweight tools that help schools, nonprofits, and local businesses do their work with ease. Based in South Bend, working with teams anywhere.</p>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn brand" href="#work">See my work</a>
+          <a class="btn" href="#about">About me</a>
         </div>
       </div>
-    </a>
-  );
-}
+      <div class="figure">
+        <div class="frame">
+          <!-- Swap with your own image URL -->
+          <img alt="Portrait" src="https://images.unsplash.com/photo-1517784092221-3d385830f6b3?q=80&w=1200&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover" />
+        </div>
+        <div class="badge">Open for projects</div>
+      </div>
+    </section>
 
-function Timeline(){
-  const items = [
-    { role: 'Assistant Head of School (Project Consultant)', org: 'STMA', time: '2025', desc: 'Partnered on digital classroom pilot and staff workflows.' },
-    { role: 'Graduate Fellow', org: 'Notre Dame ESTEEM', time: '2024–2025', desc: 'Built prototypes, user research, data storytelling.' },
-    { role: 'Analyst (Part-time)', org: 'RecSports Ops', time: '2024', desc: 'Optimized scheduling, built dashboards.' },
-  ];
-  return (
-    <ol className="mt-6 space-y-4">
-      {items.map((it, i) => (
-        <li key={i} className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="font-medium">{it.role} — <span className="text-neutral-500 dark:text-neutral-400">{it.org}</span></h3>
-            <span className="text-xs text-neutral-500 dark:text-neutral-400">{it.time}</span>
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About</h2>
+      <p class="muted" style="max-width:70ch">Hi, I’m Your Name. I focus on practical, human‑centered design. I love simple layouts, fast sites, and content that’s easy to understand. My work spans education, community, and small business — always aiming for clarity and impact.</p>
+      <div class="cards" style="margin-top:16px">
+        <div class="card"><strong>What I do</strong><br><span class="muted">Web design & dev • UX writing • No‑code</span></div>
+        <div class="card"><strong>Tools</strong><br><span class="muted">HTML/CSS/JS, React, Figma, Notion</span></div>
+        <div class="card"><strong>Values</strong><br><span class="muted">Clarity • Respect • Reliability</span></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <h2>Services</h2>
+      <div class="cards" style="margin-top:14px">
+        <div class="card">
+          <h3 style="margin:.2em 0">Websites</h3>
+          <p class="muted">Custom sites that are fast, mobile‑friendly, and easy to update.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:.2em 0">Brand & Copy</h3>
+          <p class="muted">Clear messaging, tone, and simple brand systems for small teams.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:.2em 0">Light Apps</h3>
+          <p class="muted">Simple tools that automate workflows without heavy software.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <h2>Selected Work</h2>
+      <div class="grid work" style="margin-top:14px">
+        <article class="work-item">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" alt="Classroom technology" />
+          <div class="body">
+            <h3 style="margin:.2em 0">Digital Classroom Pilot</h3>
+            <p class="muted">Connectivity + simple teaching tools for a parish school.</p>
+            <p><a class="btn" href="#contact">Ask about this</a></p>
           </div>
-          <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">{it.desc}</p>
-        </li>
-      ))}
-    </ol>
-  );
-}
+        </article>
+        <article class="work-item">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" alt="Operations" />
+          <div class="body">
+            <h3 style="margin:.2em 0">Ops Dashboard</h3>
+            <p class="muted">Staffing & schedules made visible for a busy facility.</p>
+            <p><a class="btn" href="#contact">Learn more</a></p>
+          </div>
+        </article>
+        <article class="work-item">
+          <img src="https://images.unsplash.com/photo-1551281044-8d8f4f99b3a8?q=80&w=1200&auto=format&fit=crop" alt="Charts and data" />
+          <div class="body">
+            <h3 style="margin:.2em 0">Insights Toolkit</h3>
+            <p class="muted">Research templates that turn data into decisions.</p>
+            <p><a class="btn" href="#contact">View details</a></p>
+          </div>
+        </article>
+        <article class="work-item">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop" alt="Workshop" />
+          <div class="body">
+            <h3 style="margin:.2em 0">Story Lab</h3>
+            <p class="muted">Workshops that help teens craft and share their stories.</p>
+            <p><a class="btn" href="#contact">Run a workshop</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-function ArticleCard({title, date, link}:{title:string, date:string, link:string}){
-  return (
-    <a href={link} className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:shadow-lg transition-shadow">
-      <h3 className="font-medium">{title}</h3>
-      <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{date}</p>
-      <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">Read more →</p>
-    </a>
-  );
-}
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p class="muted">Swap these placeholders with your photos.</p>
+      <div class="gallery" style="margin-top:12px">
+        <div class="ph">Photo</div>
+        <div class="ph">Photo</div>
+        <div class="ph">Photo</div>
+        <div class="ph">Photo</div>
+        <div class="ph">Photo</div>
+        <div class="ph">Photo</div>
+      </div>
+    </section>
 
-function Quote({text, author}:{text:string, author:string}){
-  return (
-    <figure className="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/60">
-      <blockquote className="italic">“{text}”</blockquote>
-      <figcaption className="mt-3 text-sm text-neutral-600 dark:text-neutral-400">— {author}</figcaption>
-    </figure>
-  );
-}
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div>
+          <p><strong>Email</strong><br><a href="mailto:you@example.com">you@example.com</a></p>
+          <p><strong>Phone</strong><br><a href="tel:+15745550134">(574) 555‑0134</a></p>
+          <p><strong>Location</strong><br><span class="muted">South Bend, IN</span></p>
+          <div class="ph" style="height:280px">Map Placeholder</div>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Thanks! I\'ll reply soon.');">
+          <label><span class="sr-only">Name</span>
+            <input required placeholder="Your name" /></label>
+          <label><span class="sr-only">Email</span>
+            <input type="email" required placeholder="Email" style="margin-top:10px" /></label>
+          <label><span class="sr-only">Message</span>
+            <textarea rows="6" required placeholder="Your message" style="margin-top:10px"></textarea></label>
+          <button type="submit" style="margin-top:12px">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-function StructuredData(){
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Divine Uwera',
-    url: 'https://example.com',
-    sameAs: ['https://linkedin.com/in/your-handle','https://github.com/your-handle'],
-    jobTitle: 'Graduate Student, Entrepreneurship & Innovation',
-    worksFor: { '@type': 'CollegeOrUniversity', name: 'University of Notre Dame' },
-  };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}} />
-}
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <span>© <span id="year"></span> Your Name</span>
+      <span class="muted">Clear websites • Simple tools</span>
+    </div>
+  </footer>
 
-function AnalyticsPlaceholder(){
-  return (
-    <script dangerouslySetInnerHTML={{__html: `// Paste your analytics snippet here (e.g., Plausible, GA4)`}} />
-  );
-}
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
+      })
+    })
+  </script>
+</body>
+</html>
