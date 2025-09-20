@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Divine Uwera — Portfolio</title>
-  <meta name="description" content="Portfolio website — human‑centered projects, services, and contact." />
+  <title id="page-title">Loading...</title>
+  <meta name="description" id="page-description" content="Loading..." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="config.js"></script>
   <style>
     :root{
       --bg:#f7f4f0;            /* light sand */
@@ -82,15 +83,10 @@
       <nav>
         <a class="brand" href="#home" aria-label="Home">
           <span class="mark" aria-hidden="true"></span>
-          <span>Divine Uwera</span>
+          <span id="nav-brand">Loading...</span>
         </a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#work">Work</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
-          <a class="btn brand" href="#contact">Let’s work</a>
+        <div class="nav-links" id="nav-links">
+          <!-- Navigation links will be populated by JavaScript -->
         </div>
       </nav>
     </div>
@@ -100,124 +96,70 @@
     <!-- HERO -->
     <section class="hero">
       <div>
-        <p class="kicker">Portfolio</p>
-        <h1>Warm, simple design for real people</h1>
-        <p class="lede">I build clear websites and lightweight tools that help schools, nonprofits, and local businesses do their work with ease. Based in South Bend, working with teams anywhere.</p>
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
-          <a class="btn brand" href="#work">See my work</a>
-          <a class="btn" href="#about">About me</a>
+        <p class="kicker" id="hero-kicker">Loading...</p>
+        <h1 id="hero-title">Loading...</h1>
+        <p class="lede" id="hero-description">Loading...</p>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap" id="hero-buttons">
+          <!-- Hero buttons will be populated by JavaScript -->
         </div>
       </div>
       <div class="figure">
         <div class="frame">
-          <!-- Swap with your own image URL -->
-          <img alt="Portrait of Divine Uwera" src="sandbox:/mnt/data/IMG_0698.jpeg" style="width:100%; height:100%; object-fit:cover" />
+          <img id="hero-image" alt="Loading..." src="" style="width:100%; height:100%; object-fit:cover" />
         </div>
-        <div class="badge">Open for projects</div>
+        <div class="badge" id="hero-badge">Loading...</div>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
-      <h2>About</h2>
-      <p class="muted" style="max-width:70ch">Hi, I’m Divine Uwera. I focus on practical, human‑centered design. I love simple layouts, fast sites, and content that’s easy to understand. My work spans education, community, and small business — always aiming for clarity and impact.</p>
-      <div class="cards" style="margin-top:16px">
-        <div class="card"><strong>What I do</strong><br><span class="muted">Web design & dev • UX writing • No‑code</span></div>
-        <div class="card"><strong>Tools</strong><br><span class="muted">HTML/CSS/JS, React, Figma, Notion</span></div>
-        <div class="card"><strong>Values</strong><br><span class="muted">Clarity • Respect • Reliability</span></div>
+      <h2 id="about-title">Loading...</h2>
+      <p class="muted" style="max-width:70ch" id="about-description">Loading...</p>
+      <div class="cards" style="margin-top:16px" id="about-cards">
+        <!-- About cards will be populated by JavaScript -->
       </div>
     </section>
 
     <!-- SERVICES -->
     <section id="services">
-      <h2>Services</h2>
-      <div class="cards" style="margin-top:14px">
-        <div class="card">
-          <h3 style="margin:.2em 0">Websites</h3>
-          <p class="muted">Custom sites that are fast, mobile‑friendly, and easy to update.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:.2em 0">Brand & Copy</h3>
-          <p class="muted">Clear messaging, tone, and simple brand systems for small teams.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:.2em 0">Light Apps</h3>
-          <p class="muted">Simple tools that automate workflows without heavy software.</p>
-        </div>
+      <h2 id="services-title">Loading...</h2>
+      <div class="cards" style="margin-top:14px" id="services-cards">
+        <!-- Services cards will be populated by JavaScript -->
       </div>
     </section>
 
     <!-- WORK -->
     <section id="work">
-      <h2>Selected Work</h2>
-      <div class="grid work" style="margin-top:14px">
-        <article class="work-item">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop" alt="Classroom technology" />
-          <div class="body">
-            <h3 style="margin:.2em 0">Digital Classroom Pilot</h3>
-            <p class="muted">Connectivity + simple teaching tools for a parish school.</p>
-            <p><a class="btn" href="#contact">Ask about this</a></p>
-          </div>
-        </article>
-        <article class="work-item">
-          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" alt="Operations" />
-          <div class="body">
-            <h3 style="margin:.2em 0">Ops Dashboard</h3>
-            <p class="muted">Staffing & schedules made visible for a busy facility.</p>
-            <p><a class="btn" href="#contact">Learn more</a></p>
-          </div>
-        </article>
-        <article class="work-item">
-          <img src="https://images.unsplash.com/photo-1551281044-8d8f4f99b3a8?q=80&w=1200&auto=format&fit=crop" alt="Charts and data" />
-          <div class="body">
-            <h3 style="margin:.2em 0">Insights Toolkit</h3>
-            <p class="muted">Research templates that turn data into decisions.</p>
-            <p><a class="btn" href="#contact">View details</a></p>
-          </div>
-        </article>
-        <article class="work-item">
-          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop" alt="Workshop" />
-          <div class="body">
-            <h3 style="margin:.2em 0">Story Lab</h3>
-            <p class="muted">Workshops that help teens craft and share their stories.</p>
-            <p><a class="btn" href="#contact">Run a workshop</a></p>
-          </div>
-        </article>
+      <h2 id="work-title">Loading...</h2>
+      <div class="grid work" style="margin-top:14px" id="work-grid">
+        <!-- Work items will be populated by JavaScript -->
       </div>
     </section>
 
     <!-- GALLERY -->
     <section id="gallery">
-      <h2>Gallery</h2>
-      <p class="muted">Swap these placeholders with your photos.</p>
-      <div class="gallery" style="margin-top:12px">
-        <div class="ph">Photo</div>
-        <div class="ph">Photo</div>
-        <div class="ph">Photo</div>
-        <div class="ph">Photo</div>
-        <div class="ph">Photo</div>
-        <div class="ph">Photo</div>
+      <h2 id="gallery-title">Loading...</h2>
+      <p class="muted" id="gallery-description">Loading...</p>
+      <div class="gallery" style="margin-top:12px" id="gallery-grid">
+        <!-- Gallery items will be populated by JavaScript -->
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact</h2>
+      <h2 id="contact-title">Loading...</h2>
       <div class="contact-grid">
-        <div>
-          <p><strong>Email</strong><br><a href="mailto:duwera@nd.edu">duwera@nd.edu</a></p>
-          <p><strong>Phone</strong><br><a href="tel:+15745550134">(574) 555‑0134</a></p>
-          <p><strong>Location</strong><br><span class="muted">South Bend, Indiana • Notre Dame</span></p>
-          <div class="ph" style="height:280px">Map Placeholder</div>
+        <div id="contact-info">
+          <!-- Contact info will be populated by JavaScript -->
         </div>
-        <form onsubmit="event.preventDefault(); alert('Thanks! I\'ll reply soon.');">
+        <form id="contact-form" onsubmit="event.preventDefault(); alert(CONFIG.contact.form.successMessage);">
           <label><span class="sr-only">Name</span>
-            <input required placeholder="Your name" /></label>
+            <input required id="contact-name" placeholder="Loading..." /></label>
           <label><span class="sr-only">Email</span>
-            <input type="email" required placeholder="Email" style="margin-top:10px" /></label>
+            <input type="email" required id="contact-email" placeholder="Loading..." style="margin-top:10px" /></label>
           <label><span class="sr-only">Message</span>
-            <textarea rows="6" required placeholder="Your message" style="margin-top:10px"></textarea></label>
-          <button type="submit" style="margin-top:12px">Send message</button>
+            <textarea rows="6" required id="contact-message" placeholder="Loading..." style="margin-top:10px"></textarea></label>
+          <button type="submit" id="contact-submit" style="margin-top:12px">Loading...</button>
         </form>
       </div>
     </section>
@@ -225,19 +167,148 @@
 
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <span>© <span id="year"></span> Divine Uwera</span>
-      <span class="muted">Clear websites • Simple tools</span>
+      <span>© <span id="year"></span> <span id="footer-copyright">Loading...</span></span>
+      <span class="muted" id="footer-tagline">Loading...</span>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
-      })
-    })
+    // Wait for CONFIG to be loaded
+    function initializePortfolio() {
+      if (typeof CONFIG === 'undefined') {
+        setTimeout(initializePortfolio, 100);
+        return;
+      }
+
+      // Set page metadata
+      document.getElementById('page-title').textContent = CONFIG.site.title;
+      document.getElementById('page-description').setAttribute('content', CONFIG.site.description);
+
+      // Navigation
+      document.getElementById('nav-brand').textContent = CONFIG.navigation.brand;
+      const navLinks = document.getElementById('nav-links');
+      CONFIG.navigation.links.forEach(link => {
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.textContent = link.text;
+        navLinks.appendChild(a);
+      });
+      const ctaButton = document.createElement('a');
+      ctaButton.className = 'btn brand';
+      ctaButton.href = '#contact';
+      ctaButton.textContent = CONFIG.navigation.ctaButton;
+      navLinks.appendChild(ctaButton);
+
+      // Hero section
+      document.getElementById('hero-kicker').textContent = CONFIG.hero.kicker;
+      document.getElementById('hero-title').textContent = CONFIG.hero.title;
+      document.getElementById('hero-description').textContent = CONFIG.hero.description;
+      document.getElementById('hero-image').src = CONFIG.hero.image.src;
+      document.getElementById('hero-image').alt = CONFIG.hero.image.alt;
+      document.getElementById('hero-badge').textContent = CONFIG.hero.badge;
+
+      const heroButtons = document.getElementById('hero-buttons');
+      const primaryBtn = document.createElement('a');
+      primaryBtn.className = 'btn brand';
+      primaryBtn.href = '#work';
+      primaryBtn.textContent = CONFIG.hero.primaryButton;
+      heroButtons.appendChild(primaryBtn);
+
+      const secondaryBtn = document.createElement('a');
+      secondaryBtn.className = 'btn';
+      secondaryBtn.href = '#about';
+      secondaryBtn.textContent = CONFIG.hero.secondaryButton;
+      heroButtons.appendChild(secondaryBtn);
+
+      // About section
+      document.getElementById('about-title').textContent = CONFIG.about.title;
+      document.getElementById('about-description').textContent = CONFIG.about.description;
+      const aboutCards = document.getElementById('about-cards');
+      CONFIG.about.cards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `<strong>${card.title}</strong><br><span class="muted">${card.content}</span>`;
+        aboutCards.appendChild(div);
+      });
+
+      // Services section
+      document.getElementById('services-title').textContent = CONFIG.services.title;
+      const servicesCards = document.getElementById('services-cards');
+      CONFIG.services.items.forEach(service => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `<h3 style="margin:.2em 0">${service.title}</h3><p class="muted">${service.description}</p>`;
+        servicesCards.appendChild(div);
+      });
+
+      // Work section
+      document.getElementById('work-title').textContent = CONFIG.work.title;
+      const workGrid = document.getElementById('work-grid');
+      CONFIG.work.items.forEach(item => {
+        const article = document.createElement('article');
+        article.className = 'work-item';
+        article.innerHTML = `
+          <img src="${item.image.src}" alt="${item.image.alt}" />
+          <div class="body">
+            <h3 style="margin:.2em 0">${item.title}</h3>
+            <p class="muted">${item.description}</p>
+            <p><a class="btn" href="#contact">${item.buttonText}</a></p>
+          </div>
+        `;
+        workGrid.appendChild(article);
+      });
+
+      // Gallery section
+      document.getElementById('gallery-title').textContent = CONFIG.gallery.title;
+      document.getElementById('gallery-description').textContent = CONFIG.gallery.description;
+      const galleryGrid = document.getElementById('gallery-grid');
+      for (let i = 0; i < CONFIG.gallery.placeholderCount; i++) {
+        const div = document.createElement('div');
+        div.className = 'ph';
+        div.textContent = 'Photo';
+        galleryGrid.appendChild(div);
+      }
+
+      // Contact section
+      document.getElementById('contact-title').textContent = CONFIG.contact.title;
+      const contactInfo = document.getElementById('contact-info');
+      contactInfo.innerHTML = `
+        <p><strong>Email</strong><br><a href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></p>
+        <p><strong>Phone</strong><br><a href="tel:${CONFIG.contact.phone.replace(/[^\d]/g, '')}">${CONFIG.contact.phone}</a></p>
+        <p><strong>Location</strong><br><span class="muted">${CONFIG.contact.location}</span></p>
+        <div class="ph" style="height:280px">Map Placeholder</div>
+      `;
+
+      document.getElementById('contact-name').placeholder = CONFIG.contact.form.namePlaceholder;
+      document.getElementById('contact-email').placeholder = CONFIG.contact.form.emailPlaceholder;
+      document.getElementById('contact-message').placeholder = CONFIG.contact.form.messagePlaceholder;
+      document.getElementById('contact-submit').textContent = CONFIG.contact.form.submitButton;
+
+      // Footer
+      document.getElementById('footer-copyright').textContent = CONFIG.footer.copyright;
+      document.getElementById('footer-tagline').textContent = CONFIG.footer.tagline;
+
+      // Set year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href');
+          if (id.length > 1) {
+            e.preventDefault();
+            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializePortfolio);
+    } else {
+      initializePortfolio();
+    }
   </script>
 </body>
 </html>
