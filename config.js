@@ -30,7 +30,7 @@ const CONFIG = {
     primaryButton: "See my work",
     secondaryButton: "About me",
     image: {
-      src: "sandbox:/mnt/data/IMG_0698.jpeg",
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3",
       alt: "Portrait of Divine Uwera"
     },
     badge: "Open for projects"
@@ -40,6 +40,10 @@ const CONFIG = {
   about: {
     title: "About",
     description: "Hi, I'm Divine Uwera. I focus on practical, human‑centered design. I love simple layouts, fast sites, and content that's easy to understand. My work spans education, community, and small business — always aiming for clarity and impact.",
+    profileImage: {
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3",
+      alt: "Profile photo of Divine Uwera"
+    },
     cards: [
       {
         title: "What I do",

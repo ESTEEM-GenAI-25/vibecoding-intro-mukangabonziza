@@ -69,6 +69,12 @@
       .hero{grid-template-columns:1.1fr .9fr}
       .contact-grid{grid-template-columns:1fr 1fr}
     }
+    
+    /* RESPONSIVE PROFILE IMAGE */
+    @media(max-width:768px){
+      #about .profile-section{flex-direction:column; align-items:center; text-align:center}
+      #about-profile-image{margin-top:16px}
+    }
     form input, form textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card); color:var(--fg)}
     form button{padding:12px 16px; border-radius:999px; border:1px solid var(--brand); background:var(--brand); color:#fff}
     form button:hover{background:var(--brand-dark); border-color:var(--brand-dark)}
@@ -114,8 +120,15 @@
     <!-- ABOUT -->
     <section id="about">
       <h2 id="about-title">Loading...</h2>
-      <p class="muted" style="max-width:70ch" id="about-description">Loading...</p>
-      <div class="cards" style="margin-top:16px" id="about-cards">
+      <div class="profile-section" style="display:flex; gap:24px; align-items:flex-start; margin-bottom:16px">
+        <div style="flex:1; max-width:70ch">
+          <p class="muted" id="about-description">Loading...</p>
+        </div>
+        <div style="flex-shrink:0">
+          <img id="about-profile-image" src="" alt="Loading..." style="width:120px; height:120px; border-radius:12px; object-fit:cover; border:3px solid var(--border)" />
+        </div>
+      </div>
+      <div class="cards" id="about-cards">
         <!-- About cards will be populated by JavaScript -->
       </div>
     </section>
@@ -223,6 +236,8 @@
       // About section
       document.getElementById('about-title').textContent = CONFIG.about.title;
       document.getElementById('about-description').textContent = CONFIG.about.description;
+      document.getElementById('about-profile-image').src = CONFIG.about.profileImage.src;
+      document.getElementById('about-profile-image').alt = CONFIG.about.profileImage.alt;
       const aboutCards = document.getElementById('about-cards');
       CONFIG.about.cards.forEach(card => {
         const div = document.createElement('div');
