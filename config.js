@@ -30,8 +30,8 @@ const CONFIG = {
     primaryButton: "See my work",
     secondaryButton: "About me",
     image: {
-      src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3",
-      alt: "Portrait of Divine Uwera"
+      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3",
+      alt: "Portrait of Divine Uwera - Professional headshot of a brown East African woman with microlocs, glasses, and a beautiful smile"
     },
     badge: "Open for projects"
   },
@@ -41,8 +41,8 @@ const CONFIG = {
     title: "About",
     description: "Hi, I'm Divine Uwera. I focus on practical, human‑centered design. I love simple layouts, fast sites, and content that's easy to understand. My work spans education, community, and small business — always aiming for clarity and impact.",
     profileImage: {
-      src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3",
-      alt: "Profile photo of Divine Uwera"
+      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3",
+      alt: "Profile photo of Divine Uwera - Professional headshot of a brown East African woman with microlocs, glasses, and a beautiful smile"
     },
     cards: [
       {
